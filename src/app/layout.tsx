@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stream Connect - Real-time Video Streaming",
-  description: "Secure real-time video and audio streaming between devices",
+  title: "StealthCam - Remote Surveillance Tool",
+  description: "StealthCam is a lightweight remote monitoring tool that turns your computer into a live surveillance device. Capture and stream video/audio securely to your phone in real-time.",
 };
 
 export default function RootLayout({

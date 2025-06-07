@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 console.log(`
-🎥 Stream Connect - Real-time Video Streaming App
+🕵️‍♂️ StealthCam - Remote Surveillance Tool
 
 ✅ Application has been successfully set up!
 

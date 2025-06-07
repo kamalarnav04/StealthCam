@@ -31,8 +31,8 @@ CMD ["npm", "start"]
 
 Build and run:
 ```bash
-docker build -t stream-app .
-docker run -p 3000:3000 stream-app
+docker build -t stealthcam .
+docker run -p 3000:3000 stealthcam
 ```
 
 ### 4. Production Considerations

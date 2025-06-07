@@ -4,6 +4,12 @@
 
 Perfect for discrete monitoring, security purposes, or remote surveillance when you need to keep an eye on your space from anywhere.
 
+## 📸 Screenshot
+
+![StealthCam Interface](Screenshots/image.png)
+
+*StealthCam's computer client interface showing video preview, stream controls, and ghost mode functionality*
+
 ## ✨ Key Features
 
 ### 🎥 **Real-time Surveillance**
