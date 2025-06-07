@@ -1,142 +1,233 @@
-# Stream Connect - Real-time Video Streaming Application
+# StealthCam 🕵️‍♂️
 
-A secure, real-time video and audio streaming application built with Next.js, WebRTC, and Socket.IO. This application enables seamless streaming from a computer to mobile devices with authentication and connection management.
+**StealthCam is a lightweight remote monitoring tool that turns your computer into a live surveillance device. It captures video and audio streams from your system and securely transmits them to your connected phone in real-time via a web interface.**
 
-## Features
+Perfect for discrete monitoring, security purposes, or remote surveillance when you need to keep an eye on your space from anywhere.
 
-### 🎥 Real-time Video Streaming
-- High-quality video streaming using WebRTC
-- Adaptive streaming quality (Low, Medium, High)
-- Real-time audio transmission
-- Minimal latency peer-to-peer connections
+## ✨ Key Features
 
-### 🔐 Security & Authentication
-- JWT-based authentication
+### 🎥 **Real-time Surveillance**
+- Live video and audio streaming from computer to mobile device
+- High-quality WebRTC streaming with minimal latency
+- Adaptive quality settings (Low/Medium/High) based on connection
+- Real-time peer-to-peer connection for maximum security
+
+### 🔐 **Security & Privacy**
+- JWT-based authentication system
 - Secure WebRTC connections with STUN servers
-- User session management
-- Protected streams with authorization
+- No data persistence - streams are not recorded or stored
+- Password-protected access to prevent unauthorized viewing
 
-### 📱 Cross-Device Support
-- **Computer Client**: Stream video/audio from webcam and microphone
-- **Mobile Client**: View streams with touch-friendly controls
-- Responsive design for all screen sizes
+### 📱 **Cross-Platform Access**
+- **Computer Client**: Acts as the surveillance camera (streams video/audio)
+- **Mobile Client**: Remote viewing device with touch controls
+- Responsive web interface works on any device with a browser
+- No app installation required
 
-### 🎛️ Stream Controls
-- Start/stop streaming from computer
-- Request streams from mobile device
+### 👻 **Stealth Features**
+- **Ghost Mode**: Instantly black out the computer screen (ESC to exit)
+- Discrete interface that doesn't draw attention
+- Silent operation with minimal system footprint
+- Quick activation and deactivation controls
+
+### 🎛️ **Remote Controls**
+- Start/stop streaming remotely from mobile device
+- Request live feeds on-demand
 - Volume control and mute functionality
-- Fullscreen video playback
-- Real-time connection status monitoring
+- Fullscreen viewing for better monitoring
+- Real-time connection status indicators
 
-### 🔗 Connection Management
-- Real-time device discovery
-- Connection state monitoring
-- Automatic reconnection handling
-- Multiple device support per user
-
-## Technology Stack
-
-- **Frontend**: Next.js 15, React, TypeScript, Tailwind CSS
-- **Real-time Communication**: Socket.IO, WebRTC
-- **Authentication**: JWT, bcryptjs
-- **Streaming**: MediaStream API, RTCPeerConnection
-- **Styling**: Tailwind CSS with responsive design
-
-## Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
+- Node.js 18 or higher
 - Modern web browser with WebRTC support
-- Camera and microphone access for streaming
+- Camera and microphone on the computer to monitor
+- Stable internet connection
 
 ### Installation
 
-1. **The project is already set up in your current directory**
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/stealthcam.git
+   cd stealthcam
+   ```
 
-2. **Install additional dependencies if needed:**
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Environment variables are already configured in `.env.local`**
-   - In production, change the secrets to secure random strings
+3. **Set up environment variables**
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env.local
+   ```
+   
+   Update `.env.local` with your configuration:
+   ```env
+   JWT_SECRET=your-super-secret-jwt-key-here
+   NEXTAUTH_SECRET=your-nextauth-secret-here
+   NEXTAUTH_URL=http://localhost:3000
+   ```
 
-4. **Start the development server:**
+4. **Start the development server**
    ```bash
    npm run dev
    ```
 
-5. **Open the application:**
-   - Navigate to `http://localhost:3000`
-   - The application will automatically detect your device type
+5. **Access the application**
+   - Open `http://localhost:3000` in your browser
+   - Set up your surveillance system in minutes!
 
-## Usage Guide
+## 📖 How to Use
 
-### Step 1: Authentication
-1. Open the application in your browser
-2. Enter a username and password (new users are automatically registered)
-3. Select your device type:
-   - **Computer**: For streaming (captures video/audio)
-   - **Mobile**: For viewing (receives video/audio)
+### Setting Up the Surveillance Computer
 
-### Step 2: Computer Setup (Streaming)
-1. Login with device type set to "Computer"
-2. Grant camera and microphone permissions when prompted
-3. Select your preferred stream quality
-4. Click "Start Stream" to begin broadcasting
-5. Your mobile devices will be notified
+1. **Login on the target computer**
+   - Open StealthCam in a web browser
+   - Create an account with username/password
+   - Select **"Computer"** as device type
+   - Grant camera and microphone permissions
 
-### Step 3: Mobile Setup (Viewing)
-1. Login with the same username on your mobile device
-2. Set device type to "Mobile"
-3. Tap "Request Stream" to start receiving video
-4. Use the controls to adjust volume, mute, or go fullscreen
+2. **Configure stream settings**
+   - Choose quality: Low (640x480), Medium (720p), or High (1080p)
+   - Test camera and microphone functionality
+   - Use **Ghost Mode** to hide the interface when needed
 
-### Stream Quality Options
-- **Low**: 640x480 @ 15fps - Good for slow connections
-- **Medium**: 1280x720 @ 30fps - Balanced quality and performance
-- **High**: 1920x1080 @ 30fps - Best quality, requires good connection
+3. **Start surveillance**
+   - Click "Start Stream" to begin broadcasting
+   - The computer is now ready for remote monitoring
 
-## Architecture
+### Remote Monitoring from Mobile
 
-### Client-Server Communication
+1. **Connect from your phone**
+   - Open the same URL on your mobile device
+   - Login with the same username/password
+   - Select **"Mobile"** as device type
+
+2. **View live feed**
+   - Tap "Request Stream" to connect to the surveillance feed
+   - Use touch controls for volume, mute, and fullscreen
+   - Monitor in real-time from anywhere
+
+### Stealth Operation
+
+- **Quick Hide**: Use the Ghost Mode button to instantly black out the computer screen
+- **Emergency Exit**: Press ESC key to exit Ghost Mode quickly
+- **Discrete Access**: Login appears as a normal web application
+- **Silent Running**: Minimal system impact during operation
+
+## 🛠️ Technology Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Real-time**: Socket.IO, WebRTC for P2P streaming
+- **Authentication**: JWT tokens, bcryptjs encryption
+- **Styling**: Tailwind CSS with responsive design
+- **Streaming**: MediaStream API, RTCPeerConnection
+
+## 🏗️ Project Structure
+
 ```
-Computer (Streamer) ←→ Server (Socket.IO) ←→ Mobile (Viewer)
-                   ↓
-              WebRTC P2P Connection
+stealthcam/
+├── src/
+│   ├── app/                # Next.js app router
+│   │   ├── api/           # Authentication APIs
+│   │   └── globals.css    # Global styling
+│   ├── components/        # React components
+│   │   ├── ComputerClient.tsx  # Surveillance computer interface
+│   │   ├── MobileClient.tsx    # Mobile viewing interface
+│   │   └── LoginForm.tsx       # Authentication form
+│   ├── contexts/          # React contexts
+│   │   ├── AuthContext.tsx     # Authentication state
+│   │   └── StreamContext.tsx   # Streaming state
+│   └── lib/               # Utility libraries
+│       ├── socket.ts      # Socket.IO configuration
+│       └── webrtc.ts      # WebRTC utilities
+├── public/                # Static assets
+└── package.json           # Project dependencies
 ```
 
-## Security Features
+## 🔒 Security Considerations
 
-### Authentication & Authorization
-- JWT tokens with expiration
-- Password hashing with bcryptjs
-- Session-based authentication
-- Device-specific access control
+### Authentication
+- All sessions are protected with JWT tokens
+- Passwords are hashed using bcryptjs
+- No sensitive data is stored permanently
 
 ### Network Security
-- HTTPS recommended for production
-- Secure WebSocket connections
-- STUN servers for NAT traversal
-- No data persistence (privacy-focused)
+- WebRTC provides encrypted P2P connections
+- Use HTTPS in production environments
+- STUN servers handle NAT traversal securely
 
-## Troubleshooting
+### Privacy
+- No video or audio data is recorded or stored
+- Streams are live-only and disappear when disconnected
+- No analytics or tracking implemented
 
-### Common Issues
+## 📋 System Requirements
 
-#### Camera/Microphone Not Working
-- Check browser permissions
-- Ensure HTTPS in production
-- Verify device availability
+### Computer (Surveillance Device)
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Working camera and microphone
+- Stable internet connection
+- Minimum 2GB RAM recommended
 
-#### Connection Issues
-- Check firewall settings
-- Verify STUN server connectivity
-- Try different network connections
+### Mobile Device (Monitoring)
+- Any smartphone or tablet with a web browser
+- Internet connection (WiFi or cellular)
+- Modern browser with WebRTC support
 
-#### Stream Quality Problems
-- Reduce stream quality setting
-- Check network bandwidth
-- Monitor browser console for errors
+## 🚨 Legal Notice
+
+**Important**: This software is intended for legitimate surveillance and monitoring purposes only. Users are responsible for:
+
+- Complying with local privacy and surveillance laws
+- Obtaining proper consent when monitoring spaces with people
+- Using the software ethically and legally
+- Ensuring they have permission to monitor the location
+
+The developers are not responsible for misuse of this software.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+### Development Setup
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/stealthcam.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+If you encounter any issues or have questions:
+
+1. Check the [Issues](https://github.com/yourusername/stealthcam/issues) page
+2. Create a new issue with detailed information
+3. Include browser version, OS, and error messages
+
+## 🔄 Version History
+
+- **v0.1.0** - Initial release
+  - Basic streaming functionality
+  - Authentication system
+  - Ghost mode for stealth operation
+  - Mobile and computer clients
+
+---
+
+**⚠️ Use Responsibly**: StealthCam is a powerful surveillance tool. Always ensure you have proper authorization before monitoring any location or individuals.

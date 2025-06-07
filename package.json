@@ -1,6 +1,7 @@
 {
-  "name": "stream-app",
+  "name": "stealthcam",
   "version": "0.1.0",
+  "description": "StealthCam is a lightweight remote monitoring tool that turns your computer into a live surveillance device. It captures video and audio streams from your system and securely transmits them to your connected phone in real-time via a web interface.",
   "private": true,
   "scripts": {
     "dev": "next dev",
