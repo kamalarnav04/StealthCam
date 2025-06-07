@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { StreamProvider } from "@/contexts/StreamContext";
+import DevAuthHelper from "@/components/DevAuthHelper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,9 @@ export default function RootLayout({
         <div className={`${fontVars} antialiased min-h-screen`}>
           <AuthProvider>
             <StreamProvider>
-              {children}
+              <DevAuthHelper>
+                {children}
+              </DevAuthHelper>
             </StreamProvider>
           </AuthProvider>
         </div>
