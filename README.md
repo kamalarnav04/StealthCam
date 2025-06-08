@@ -238,6 +238,8 @@ If you encounter any issues or have questions:
 
 **⚠️ Use Responsibly**: StealthCam is a powerful surveillance tool. Always ensure you have proper authorization before monitoring any location or individuals.
 
+---
+
 ## 🚀 Easy Hosting on Replit (No Local Setup Needed)
 
 You can run **StealthCam** directly in the cloud using [Replit](https://replit.com) – no need to install anything or be on the same Wi-Fi network.
