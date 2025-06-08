@@ -17,12 +17,15 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponse) => {
   const socketRes = res as NextApiResponseServerIO;
   
   if (!socketRes.socket?.server) {
+    console.error('Server socket not available');
     res.status(500).json({ error: 'Server socket not available' });
     return;
   }
 
   if (socketRes.socket.server.io) {
     console.log('Socket is already running');
+    res.end();
+    return;
   } else {
     console.log('Socket is initializing');
     const io = new IOServer(socketRes.socket.server, {
@@ -37,16 +40,21 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponse) => {
     io.use((socket, next) => {
       const token = socket.handshake.auth.token;
       if (!token) {
+        console.log('Socket connection rejected: No token provided');
         return next(new Error('Authentication token required'));
-      }      try {
+      }
+
+      try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: string; deviceType: string };
         (socket as unknown as { userId: string; deviceType: string }).userId = decoded.userId;
         (socket as unknown as { userId: string; deviceType: string }).deviceType = decoded.deviceType;
+        console.log(`Socket authenticated: ${decoded.userId} (${decoded.deviceType})`);
         next();
-      } catch {
+      } catch (error) {
+        console.log('Socket authentication failed:', error);
         next(new Error('Invalid token'));
       }
-    });    io.on('connection', (socket) => {
+    });io.on('connection', (socket) => {
       const authSocket = socket as unknown as { userId: string; deviceType: string };
       console.log(`User ${authSocket.userId} connected from ${authSocket.deviceType}`);      // Join room based on user ID
       socket.join(authSocket.userId);

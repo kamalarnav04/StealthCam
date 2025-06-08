@@ -8,17 +8,21 @@ const LoginForm: React.FC = () => {
   const [password, setPassword] = useState('');
   const [deviceType, setDeviceType] = useState<'computer' | 'mobile'>('computer');
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const { login, error } = useAuth();
+  const { login, error, clearError } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!username || !password) return;
 
+    // Clear any existing errors
+    clearError();
+    
     setIsSubmitting(true);
     try {
-      await login(username, password, deviceType);    } catch {
-      // Error is handled by the context
+      await login(username, password, deviceType);
+    } catch (err) {
+      // Error is handled by the context, but log it for debugging
+      console.error('Login submission error:', err);
     } finally {
       setIsSubmitting(false);
     }
@@ -29,10 +33,16 @@ const LoginForm: React.FC = () => {
     const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/.test(userAgent);
     setDeviceType(isMobile ? 'mobile' : 'computer');
   };
-
   React.useEffect(() => {
     detectDeviceType();
   }, []);
+
+  // Clear errors when user starts typing
+  React.useEffect(() => {
+    if (error && (username || password)) {
+      clearError();
+    }
+  }, [username, password, error, clearError]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
