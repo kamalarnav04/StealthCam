@@ -237,3 +237,17 @@ If you encounter any issues or have questions:
 ---
 
 **⚠️ Use Responsibly**: StealthCam is a powerful surveillance tool. Always ensure you have proper authorization before monitoring any location or individuals.
+
+## 🚀 Easy Hosting on Replit (No Local Setup Needed)
+
+You can run **StealthCam** directly in the cloud using [Replit](https://replit.com) – no need to install anything or be on the same Wi-Fi network.
+
+### 👉 How to Run on Replit
+
+1. Go to [https://replit.com](https://replit.com) and log in or sign up.
+2. Click on the **"Create Repl"** button.
+3. Select **"Import from GitHub"** and paste this repo URL: https://github.com/kamalarnav04/StealthCam
+4. Once it imports, open the **Shell** tab and run: npm install
+5. Create a file named .env.local in the root folder
+6. Then start the development server
+7. Copy the temporary link shown in the Replit webview — you can now access StealthCam from anywhere 🎉
